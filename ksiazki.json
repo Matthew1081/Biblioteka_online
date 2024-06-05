@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "tytul": "tytul1",
+        "autor": "autor1",
+        "isbn": "1234567890",
+        "dostepnosc": true
+    },
+    {
+        "id": 2,
+        "tytul": "tytul2",
+        "autor": "autor2",
+        "isbn": "1234567890",
+        "dostepnosc": true
+    },
+    {
+        "id": 3,
+        "tytul": "tytul1",
+        "autor": "",
+        "isbn": "",
+        "avaible": true
+    },
+    {
+        "id": 4,
+        "tytul": "Mateusz",
+        "autor": "Mateusz",
+        "isbn": "12346996",
+        "avaible": true
+    },
+    {
+        "id": 5,
+        "tytul": "",
+        "autor": "test",
+        "isbn": "987654",
+        "avaible": true
+    }
+]
