@@ -11,7 +11,7 @@ def dodaj_ksiazke(tytul, autor, isbn):
         'tytul': tytul,
         'autor': autor,
         'isbn': isbn,
-        'available': True,
+        'dostepnosc': True,
         
     }
 

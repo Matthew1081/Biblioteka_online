@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wyniki wyszukiwania książek</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .book {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="javascript:void(0);" onclick="window.history.back();">Powrót</a>
+    </div>
+
+    <div class="results">
+        <h1>Wyniki wyszukiwania książek</h1>
+
+        {% for book in wyniki %}
+        <div class="book">
+            <h2>Tytuł książki: <span>{{ book.tytul }}</span></h2>
+            <p>Autor: <span>{{ book.autor }}</span></p>
+            <p>ISBN: <span>{{ book.isbn }}</span></p>
+            <p>Dostępność: <span>{{ 'Dostępna' if book.dostepnosc else 'Niedostępna' }}</span></p>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>

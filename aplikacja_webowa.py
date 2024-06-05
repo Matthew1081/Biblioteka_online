@@ -25,7 +25,7 @@ def dodaj_ksiazke_do_bazy(tytul, autor, isbn):
             'tytul': tytul,
             'autor': autor,
             'isbn': isbn,
-            "avaible": True
+            "dostepnosc": True
         }
 
         ksiazki.append(nowa_ksiazka)
@@ -57,6 +57,23 @@ def dodaj_uztkownika_do_bazy(imie, email):
         with open('uzytkownicy.json', 'w') as f:
             json.dump(uzytkownicy, f, indent=4)
 
+
+def load_books():
+    with open('ksiazki.json', 'r') as file:
+        books = json.load(file)
+    return books
+
+
+def search_books(title):
+    books = load_books()
+    results = [book for book in books if title.lower() in book['tytul'].lower()]
+    return results
+
+@app.route('/wyniki_wyszukiwania_ksiazek', methods=['GET'])
+def wyniki_wyszukiwania_ksiazek():
+    tytul = request.args.get('tytul', '')
+    wyniki = search_books(tytul)
+    return render_template('wyniki_wyszukiwania_ksiazek.html', wyniki=wyniki)
          
 
 if __name__ == '__main__':
