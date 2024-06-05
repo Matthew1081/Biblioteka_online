@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "uzytkownik-id": 1,
+        "ksiazka-id": 1,
+        "wypozyczenie_data": "2023-05-10",
+        "zwrot_data": "2023-05-15"
+    }
+]
