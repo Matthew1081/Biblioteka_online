@@ -33,5 +33,12 @@
         "autor": "test",
         "isbn": "987654",
         "avaible": true
+    },
+    {
+        "id": 6,
+        "tytul": "test1",
+        "autor": "test1",
+        "isbn": "87654321",
+        "avaible": true
     }
 ]

@@ -8,5 +8,10 @@
         "id": 2,
         "imie": "Test",
         "email": "Test@test.com"
+    },
+    {
+        "id": 3,
+        "imie": "Test7",
+        "email": "Test7@test.com"
     }
 ]
