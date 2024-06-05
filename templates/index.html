@@ -1,0 +1,96 @@
+
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteka</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .tab {
+            display: none;
+        }
+        .tab.active {
+            display: block;
+        }
+    </style>
+    <script>
+        function openTab(tabName) {
+            var i, tab;
+            var tabs = document.getElementsByClassName("tab");
+            for (i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+        }
+    </script>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="javascript:void(0);" onclick="openTab('dodawanie_uzytkownikow')">Dodawanie użytkowników</a>
+        <a href="javascript:void(0);" onclick="openTab('wyszukiwanie_ksiazek')">Wyszukiwanie książek</a>
+        <a href="javascript:void(0);" onclick="openTab('dodawanie_ksiazek')">Dodawanie książek</a>
+        <a href="javascript:void(0);" onclick="openTab('wypozyczanie_ksiazek')">Wypożyczanie książek</a>
+    </div>
+
+    <div id="dodawanie_uzytkownikow" class="tab active">
+        <h1>Dodawanie użytkowników</h1>
+        <form action="/dodawanie_uzytkownikow" method="POST">
+            <input type="text" name="imie" placeholder="Imię">
+            <input type="text" name="email" placeholder="Email">
+            <button type="submit">Dodaj użytkownika</button>
+        </form>
+    </div>
+
+    <div id="wyszukiwanie_ksiazek" class="tab">
+        <h1>Wyszukiwanie książek</h1>
+        <form action="/wyszukiwanie_ksiazek" method="GET">
+            <input type="text" name="tytul" placeholder="Tytuł książki">
+            <input type="text" name="autor" placeholder="Autor">
+            <input type="text" name="isbn" placeholder="ISBN">
+            <button type="submit">Szukaj książki</button>
+        </form>
+    </div>
+
+    <div id="dodawanie_ksiazek" class="tab">
+        <h1>Dodawanie książek</h1>
+        <form action="/dodawanie_ksiazek" method="POST">
+            <input type="text" name="tytul" placeholder="Tytuł">
+            <input type="text" name="autor" placeholder="Autor">
+            <input type="text" name="isbn" placeholder="ISBN">
+            <button type="submit">Dodaj książkę</button>
+        </form>
+    </div>
+
+    <div id="wypozyczanie_ksiazek" class="tab">
+        <h1>Wypożyczanie książek</h1>
+        <form action="/wypozyczanie_ksiazek" method="POST">
+            <input type="text" name="ksiazka_id" placeholder="ID książki">
+            <input type="text" name="tytul" placeholder="Tytuł">
+            <input type="text" name="email" placeholder="Email użytkownika">
+            <button type="submit">Wypożycz książkę</button>
+        </form>
+    </div>
+
+</body>
+</html>
