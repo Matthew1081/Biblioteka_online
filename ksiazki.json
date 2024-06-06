@@ -54,5 +54,12 @@
         "autor": "test4",
         "isbn": "1234589876",
         "dostepnosc": true
+    },
+    {
+        "id": 9,
+        "tytul": "test69",
+        "autor": "test69",
+        "isbn": "69696969",
+        "dostepnosc": true
     }
 ]
