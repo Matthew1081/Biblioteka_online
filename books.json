@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "tytul": "tytul1",
+        "autor": "autor1",
+        "isbn": "1234567890",
+        "dostepnosc": false
+    },
+    {
+        "id": 2,
+        "tytul": "tytul2",
+        "autor": "autor2",
+        "isbn": "1234567890",
+        "dostepnosc": true
+    },
+    {
+        "id": 3,
+        "tytul": "tytul1",
+        "autor": "autor2",
+        "isbn": "258963147",
+        "dostepnosc": true
+    },
+    {
+        "id": 4,
+        "tytul": "Mateusz",
+        "autor": "Mateusz",
+        "isbn": "12346996",
+        "dostepnosc": true
+    },
+    {
+        "id": 5,
+        "tytul": "test",
+        "autor": "test",
+        "isbn": "987654",
+        "dostepnosc": true
+    },
+    {
+        "id": 6,
+        "tytul": "test1",
+        "autor": "test1",
+        "isbn": "87654321",
+        "dostepnosc": true
+    },
+    {
+        "id": 7,
+        "tytul": "test3",
+        "autor": "test3",
+        "isbn": "147285369",
+        "dostepnosc": true
+    },
+    {
+        "id": 8,
+        "tytul": "test4",
+        "autor": "test4",
+        "isbn": "1234589876",
+        "dostepnosc": true
+    },
+    {
+        "id": 9,
+        "tytul": "test69",
+        "autor": "test69",
+        "isbn": "69696969",
+        "dostepnosc": true
+    },
+    {
+        "id": 10,
+        "tytul": "tytul1",
+        "autor": "",
+        "isbn": "",
+        "dostepnosc": true
+    }
+]

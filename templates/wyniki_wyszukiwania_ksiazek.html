@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wyniki wyszukiwania książek</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: #b3b3b3;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #b3b3b3;
+            color: black;
+        }
+        .results {
+            background-color: #b3b3b3;
+            margin-top: 20px;
+        }
+        .book {
+            background-color: #9b9a9a;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .book form {
+            display: inline;
+        }
+        .flash-message {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+        .flash-message.success {
+            background-color: #5cb85c;
+            color: white;
+        }
+        .flash-message.danger {
+            background-color: #d9534f;
+            color: white;
+        }
+    </style>
+    <script>
+        function checkLogin(action) {
+            {% if not current_user.is_authenticated %}
+            alert('Proszę się zalogować lub zarejestrować, aby ' + action + ' książkę.');
+            return false;
+            {% endif %}
+            return true;
+        }
+    </script>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="{{ url_for('index') }}">Powrót</a>
+    </div>
+
+    <div class="results">
+        <h1>Wyniki wyszukiwania książek</h1>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="flash-message {{ category }}">
+                {{ message }}
+            </div>
+            <script>
+                setTimeout(function() {
+                    document.querySelector('.flash-message').style.display = 'none';
+                }, 3000);
+            </script>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {% for book in wyniki %}
+        <div class="book">
+            <h2>Tytuł książki: <span>{{ book.tytul }}</span></h2>
+            <p>Autor: <span>{{ book.autor }}</span></p>
+            <p>ISBN: <span>{{ book.isbn }}</span></p>
+            <p>Dostępność: <span>{{ 'Dostępna' if book.dostepnosc else 'Niedostępna' }}</span></p>
+            {% if book.dostepnosc %}
+            <form action="{{ url_for('wypozycz') }}" method="POST" onsubmit="return checkLogin('wypożyczyć')">
+                <input type="hidden" name="book_id" value="{{ book.id }}">
+                <button type="submit">Wypożycz</button>
+            </form>
+            {% else %}
+            <form action="{{ url_for('zwracanie') }}" method="POST" onsubmit="return checkLogin('zwrócić')">
+                <input type="hidden" name="book_id" value="{{ book.id }}">
+                <button type="submit">Zwróć</button>
+            </form>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>

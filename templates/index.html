@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteka</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script>
+        function openTab(tabName) {
+            var i, tab;
+            var tabs = document.getElementsByClassName("tab");
+            for (i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+        }
+        
+        function toggleRegistration() {
+            var x = document.getElementById("registerForm");
+            if (x.style.display === "none" || x.style.display === "") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        function checkLogin(action) {
+            {% if not current_user.is_authenticated %}
+            alert('Proszę się zalogować lub zarejestrować, aby ' + action + ' książkę.');
+            return false;
+            {% endif %}
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="gif-background"></div>
+    <div class="navbar">
+        <!a href="javascript:void(0);" onclick="openTab('dodawanie_uzytkownikow')"> </a>
+        <a href="javascript:void(0);" onclick="openTab('wyszukiwanie_ksiazek')">Wyszukiwanie książek</a>
+        <a href="javascript:void(0);" onclick="openTab('dodawanie_ksiazek')">Dodawanie książek</a>
+        <!a href="javascript:void(0);" onclick="openTab('wypozyczanie_ksiazek')"> </a>
+        <!a href="javascript:void(0);" onclick="openTab('yt')"></a>
+        <div class="auth-forms">
+            {% if current_user.is_authenticated %}
+                <span>Welcome, {{ current_user.username }}!</span>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login_register') }}">Login/Register</a>
+                
+            {% endif %}
+        </div>
+    </div>
+    
+    <div id="dodawanie_uzytkownikow" class="tab">
+        <div class="content">
+            <h1>Dodawanie użytkowników</h1>
+            <form action="/dodawanie_uzytkownikow" method="POST">
+                <input type="text" name="imie" placeholder="Imię">
+                <input type="text" name="email" placeholder="Email">
+                <button type="submit">Dodaj użytkownika</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="wyszukiwanie_ksiazek" class="tab active">
+        <div class="content">
+            <h1>Wyszukiwanie książek</h1>
+            <form action="/wyniki_wyszukiwania_ksiazek" method="GET">
+                <input type="text" name="tytul" placeholder="Tytuł książki">
+                <input type="text" name="autor" placeholder="Autor">
+                <input type="text" name="isbn" placeholder="ISBN">
+                <button type="submit">Szukaj książki</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="dodawanie_ksiazek" class="tab">
+        <div class="content">
+            <h1>Dodawanie książek</h1>
+            <form action="/dodawanie_ksiazek" method="POST">
+                <input type="text" name="tytul" placeholder="Tytuł">
+                <input type="text" name="autor" placeholder="Autor">
+                <input type="text" name="isbn" placeholder="ISBN">
+                <button type="submit">Dodaj książkę</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="wypozyczanie_ksiazek" class="tab">
+        <div class="content">
+            <h1>Wypożyczanie książek</h1>
+            <form action="/wypozyczanie_ksiazek" method="POST">
+                <input type="text" name="ksiazka_id" placeholder="ID książki">
+                <input type="text" name="tytul" placeholder="Tytuł">
+                <input type="text" name="email" placeholder="Email użytkownika">
+                <button type="submit">Wypożycz książkę</button>
+            </form>
+        </div>
+    </div>
+    
+    <div id="yt" class="tab">
+        <div class="content">
+            <h1>Hello, world!</h1>
+            <p>This is your website content.</p>
+        </div>
+    </div>
+</body>
+</html>

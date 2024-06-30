@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "uzytkownik-id": 1,
+        "ksiazka-id": 1,
+        "wypozyczenie_data": "2024-06-30",
+        "zwrot_data": "2024-07-14"
+    },
+    {
+        "id": 2,
+        "uzytkownik-id": 1,
+        "ksiazka-id": 2,
+        "wypozyczenie_data": "2024-06-30",
+        "zwrot_data": "2024-07-14"
+    },
+    {
+        "id": 3,
+        "uzytkownik-id": 5,
+        "ksiazka-id": 1,
+        "wypozyczenie_data": "2024-06-30",
+        "zwrot_data": "2024-07-14"
+    },
+    {
+        "id": 4,
+        "uzytkownik-id": 5,
+        "ksiazka-id": 3,
+        "wypozyczenie_data": "2024-06-30",
+        "zwrot_data": "2024-07-14"
+    }
+]
