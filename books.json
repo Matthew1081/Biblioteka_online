@@ -11,14 +11,14 @@
         "tytul": "tytul2",
         "autor": "autor2",
         "isbn": "1234567890",
-        "dostepnosc": false
+        "dostepnosc": true
     },
     {
         "id": 3,
         "tytul": "tytul1",
         "autor": "autor2",
         "isbn": "258963147",
-        "dostepnosc": false
+        "dostepnosc": true
     },
     {
         "id": 4,
